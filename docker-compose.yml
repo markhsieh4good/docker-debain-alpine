@@ -1,0 +1,22 @@
+version: '3.3'
+services: 
+  project.app: 
+    image: debain-buster-10.9-slim:modify
+    container_name: project.app
+      # below will manager by supervisord
+      - ./conf/nginx:/opt/conf/nginx 
+      - ./conf/supervisor:/opt/conf/supervisord 
+      - ./app:/opt/app 
+      # below will be used by entrypoint.sh
+      - ./conf/startup:/opt/startup 
+      #- /etc/localtime:/etc/localtime:ro 
+    cap_add: 
+      - SYS_TIME 
+      - SYS_NICE 
+    ports: 
+      - 19000:80 
+
+networks: 
+  default: 
+    external: 
+      name: project-bridge 

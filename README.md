@@ -1,5 +1,9 @@
 # README 
 
+## how to start
+> you shell add a bash to trigger docker-compose <br />
+> , then you can pull, build, up of down ...
+
 ## tree
 ```
 .
